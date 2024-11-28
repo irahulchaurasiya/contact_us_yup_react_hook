@@ -38,7 +38,7 @@ type Inputs = {
 };
 
 const Page = () => {
-  const { register, handleSubmit,control,  formState: { errors } } = useForm<Inputs>({
+  const { register, handleSubmit,control,  formState: { errors , isSubmitting } } = useForm<Inputs>({
     defaultValues : {
         firstname: "",
         lastname: "",
@@ -49,7 +49,8 @@ const Page = () => {
     resolver: yupResolver(schema)
   });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await new Promise((resolve) => setTimeout(resolve , 5000));
     console.log(data);
   };
 
@@ -124,8 +125,9 @@ const Page = () => {
 
         <button className="text-black border-2 border-gray-600 bg-white mt-4 p-1 rounded-md"
          type="submit"
+         disabled= {isSubmitting}
          >
-          Submit
+          {isSubmitting ? "Submitting" : "Submit"}
         </button>
 
         <DevTool control={control} />
