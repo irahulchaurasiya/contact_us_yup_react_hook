@@ -7,10 +7,12 @@ import {DevTool} from "@hookform/devtools";
 const schema = yup.object({
     firstname: yup.string()
     .min(3, "Firstname must be atleast 3 characters")
+    .max(20, "Firstname cannnot exceed 20 characters")
     .required("Firstname is required"),
 
     lastname: yup.string()
     .min(3, "Lastname must be atleast 3 characters")
+    .max(20, "Firstname cannnot exceed 20 characters")
     .required("Lastname is required"),
 
     email: yup.string().email("Email format is not vaid").required("Email is required"),
