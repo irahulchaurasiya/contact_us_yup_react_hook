@@ -6,11 +6,13 @@ import {DevTool} from "@hookform/devtools";
 
 const schema = yup.object({
     firstname: yup.string()
+    .matches(/^[a-zA-Z]+$/ , "First Name only contains alphabets")
     .min(3, "Firstname must be atleast 3 characters")
     .max(20, "Firstname cannnot exceed 20 characters")
     .required("Firstname is required"),
 
     lastname: yup.string()
+    .matches(/^[a-zA-Z]+$/ , "Last Name only contains alphabets")
     .min(3, "Lastname must be atleast 3 characters")
     .max(20, "Firstname cannnot exceed 20 characters")
     .required("Lastname is required"),
