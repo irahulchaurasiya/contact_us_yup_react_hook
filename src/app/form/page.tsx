@@ -71,14 +71,16 @@ const Page = () => {
 
   return (
     <>
-      <h2 className="text-center text-4xl font-bold mt-8">Contact Us</h2>
+      <h2 className="text-center text-black text-4xl font-bold mt-8">
+        Contact Us
+      </h2>
       <form
         className="flex flex-col justify-center items-center mt-4 space-y-4"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col md:flex-row md:space-x-8">
           <div className="flex flex-col">
-            <label htmlFor="firstname" className="pl-1">
+            <label htmlFor="firstname" className="pl-1 text-black/70">
               First Name
             </label>
             <input
@@ -96,7 +98,7 @@ const Page = () => {
           </div>
 
           <div className="flex flex-col">
-            <label className="pl-1">Last Name</label>
+            <label className="pl-1 text-black/70">Last Name</label>
             <input
               className="text-black border-2 border-black rounded-lg p-2"
               type="text"
@@ -113,7 +115,7 @@ const Page = () => {
 
         <div className="flex flex-col md:flex-row md:space-x-8">
           <div className="flex flex-col">
-            <label className="pl-1">Email</label>
+            <label className="pl-1 text-black/70">Email</label>
             <input
               className="text-black border-2 border-black rounded-lg p-2"
               type="text"
@@ -128,10 +130,10 @@ const Page = () => {
           </div>
 
           <div className="flex flex-col">
-            <label className="pl-1">Phone</label>
+            <label className="pl-1 text-black/70">Phone</label>
             <input
               className="text-black border-2 border-black rounded-lg p-2"
-              type="number"
+              type="text"
               placeholder="Enter your phone number"
               {...register("phone")}
             />
@@ -144,7 +146,7 @@ const Page = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="">Message</label>
+          <label className="text-black/70">Message</label>
           <textarea
             className="text-black border-2 border-black rounded-lg p-2"
             placeholder="Enter your message"
