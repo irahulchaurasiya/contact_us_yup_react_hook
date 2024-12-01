@@ -159,7 +159,7 @@ const Page = () => {
         )}
 
         <button
-          className="text-black border-2 border-gray-600 bg-white mt-4 p-1 rounded-md"
+          className="text-white border-2 border-gray-600 bg-gray-700 mt-4 p-1 rounded-md"
           type="submit"
           disabled={isSubmitting}
         >
