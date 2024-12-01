@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { DevTool } from "@hookform/devtools";
+import { Box, TextField, Button, Typography, Grid2, Grid } from "@mui/material";
 
 const schema = yup.object({
   firstname: yup
@@ -70,103 +71,70 @@ const Page = () => {
   };
 
   return (
-    <>
-      <h2 className="text-center text-4xl font-bold mt-8">Contact Us</h2>
-      <form
-        className="flex flex-col justify-center items-center mt-4 space-y-4"
+    <Box sx={{ maxWidth: 600, mx: "auto", mt: 4, px: 2 }}>
+      <Typography variant="h4" align="center" color="black">
+        Contact Us
+      </Typography>
+      <Box
+        component="form"
         onSubmit={handleSubmit(onSubmit)}
+        sx={{ display: "flex", flexDirection: "column", gap: 3 }}
       >
-        <div className="flex flex-col md:flex-row md:space-x-8">
-          <div className="flex flex-col">
-            <label htmlFor="firstname" className="pl-1">
-              First Name
-            </label>
-            <input
-              className="text-black border-2 border-black rounded-lg p-2"
-              type="text"
-              id="firstname"
-              placeholder="Enter your first name"
-              {...register("firstname")}
-            />
-            {errors.firstname && (
-              <span className="text-red-500 text-sm">
-                {errors.firstname.message}
-              </span>
-            )}
-          </div>
+        <TextField
+          label="First Name"
+          variant="outlined"
+          fullWidth
+          {...register("firstname")}
+          error={!!errors.firstname}
+          helperText={errors.firstname?.message}
+        />
+        <TextField
+          label="Last Name"
+          variant="outlined"
+          fullWidth
+          {...register("lastname")}
+          error={!!errors.lastname}
+          helperText={errors.lastname?.message}
+        />
+        <TextField
+          label="Email"
+          variant="outlined"
+          fullWidth
+          {...register("email")}
+          error={!!errors.email}
+          helperText={errors.email?.message}
+        />
+        <TextField
+          label="Phone"
+          variant="outlined"
+          fullWidth
+          {...register("phone")}
+          error={!!errors.phone}
+          helperText={errors.phone?.message}
+        />
 
-          <div className="flex flex-col">
-            <label className="pl-1">Last Name</label>
-            <input
-              className="text-black border-2 border-black rounded-lg p-2"
-              type="text"
-              placeholder="Enter your last name"
-              {...register("lastname")}
-            />
-            {errors.lastname && (
-              <span className="text-red-500 text-sm">
-                {errors.lastname.message}
-              </span>
-            )}
-          </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row md:space-x-8">
-          <div className="flex flex-col">
-            <label className="pl-1">Email</label>
-            <input
-              className="text-black border-2 border-black rounded-lg p-2"
-              type="text"
-              placeholder="Enter your email"
-              {...register("email")}
-            />
-            {errors.email && (
-              <span className="text-red-500 text-sm">
-                {errors.email.message}
-              </span>
-            )}
-          </div>
-
-          <div className="flex flex-col">
-            <label className="pl-1">Phone</label>
-            <input
-              className="text-black border-2 border-black rounded-lg p-2"
-              type="number"
-              placeholder="Enter your phone number"
-              {...register("phone")}
-            />
-            {errors.phone && (
-              <span className="text-red-500 text-sm">
-                {errors.phone.message}
-              </span>
-            )}
-          </div>
-        </div>
-
-        <div className="flex flex-col">
-          <label className="">Message</label>
-          <textarea
-            className="text-black border-2 border-black rounded-lg p-2"
-            placeholder="Enter your message"
-            rows={3}
-            {...register("message")}
-          />
-        </div>
-        {errors.message && (
-          <span className="text-red-500 text-sm">{errors.message.message}</span>
-        )}
-
-        <button
-          className="text-black border-2 border-gray-600 bg-white mt-4 p-1 rounded-md"
+        <TextField
+          label="Message"
+          variant="outlined"
+          fullWidth
+          multiline
+          rows={4}
+          {...register("message")}
+          error={!!errors.message}
+          helperText={errors.message?.message}
+        />
+        <Button
+          variant="contained"
+          color="primary"
           type="submit"
           disabled={isSubmitting}
+          sx={{ alignSelf: "center" }}
         >
-          {isSubmitting ? "Submitting" : "Submit"}
-        </button>
-
-        <DevTool control={control} />
-      </form>
-    </>
+          {isSubmitting ? "Submitting..." : "Submit"}
+        </Button>
+      </Box>
+      <DevTool control={control} />
+    </Box>
   );
 };
 
